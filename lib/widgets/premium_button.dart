@@ -7,10 +7,14 @@ class PremiumButton extends StatelessWidget {
     super.key,
     this.onTap,
     this.hasBorder = false,
+    this.color,
+    this.height,
   });
 
   final VoidCallback? onTap;
   final bool hasBorder;
+  final Color? color;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +22,10 @@ class PremiumButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: 331.w,
-        height: 50.h,
+        height: height ?? 50.h,
         decoration: BoxDecoration(
-          gradient: AppTheme.gradient1,
+          gradient: color == null ? AppTheme.gradient1 : null,
+          color: color,
           borderRadius: BorderRadius.circular(5),
           border: hasBorder
               ? Border.all(

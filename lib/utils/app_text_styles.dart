@@ -90,4 +90,11 @@ class AppTextStyles {
     height: 19 / 16,
     color: Colors.black,
   );
+
+  static final TextStyle textStyle13 = TextStyle(
+    fontSize: 13.r,
+    fontWeight: FontWeight.w600,
+    height: 18 / 13,
+    color: AppTheme.yellow,
+  );
 }

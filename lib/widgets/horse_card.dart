@@ -119,27 +119,19 @@ class HorseCard extends StatelessWidget {
                         Text('14', style: AppTextStyles.textStyle8),
                       ],
                     ),
-                    ClipRRect(
-                      borderRadius: const BorderRadius.horizontal(
-                        left: Radius.circular(4),
+                    Container(
+                      width: 108.w,
+                      height: 130.h,
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.horizontal(
+                          left: Radius.circular(4),
+                        ),
+                        image: DecorationImage(
+                          image: AssetImage('assets/png/horses/horse1.png'),
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                      child: Stack(
-                        children: [
-                          Image.asset(
-                            'assets/png/horse.png',
-                            width: 108.w,
-                            height: 130.h,
-                            fit: BoxFit.cover,
-                          ),
-                          Container(
-                            width: 108.w,
-                            height: 130.h,
-                            decoration: BoxDecoration(
-                              gradient: AppTheme.gradient3,
-                            ),
-                          ),
-                        ],
-                      ),
+                      clipBehavior: Clip.antiAlias,
                     ),
                   ],
                 ),

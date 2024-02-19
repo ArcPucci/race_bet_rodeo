@@ -13,55 +13,12 @@ class RaceScreen extends StatelessWidget {
         children: [
           const GameAppBar(),
           SizedBox(height: 24.h),
-          SizedBox(
-            width: 331.w,
-            child: Row(
-              children: [
-                Text(
-                  'Information about the ',
-                  style: AppTextStyles.textStyle4,
-                ),
-                Text(
-                  'Race',
-                  style: AppTextStyles.textStyle4.copyWith(
-                    color: AppTheme.yellow,
-                  ),
-                ),
-              ],
-            ),
-          ),
+          _buildTitle(),
           SizedBox(height: 10.h),
-          Container(
-            width: 331.w,
-            height: 123.h,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.white,
-              border: Border.all(
-                width: 1.sp,
-                color: AppTheme.grey3,
-              ),
-            ),
-            padding: EdgeInsets.all(12.r),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _buildTextBody(title: 'Horses involved:', content: '6'),
-                    _buildTextBody(title: 'Your horse №:', content: '№33'),
-                  ],
-                ),
-                SizedBox(width: 80.w),
-                _buildTextBody(
-                  title: 'Your bid: ',
-                  content: '50',
-                  color: AppTheme.yellow,
-                ),
-              ],
-            ),
+          const RaceDetails(
+            horsesCount: 6,
+            bet: 50,
+            number: 33,
           ),
           Expanded(
             child: Stack(
@@ -109,19 +66,27 @@ class RaceScreen extends StatelessWidget {
                             color: AppTheme.whiteAccent2,
                           ),
                         ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
+                        child: Stack(
+                          alignment: Alignment.bottomCenter,
                           children: [
-                            Image.asset(
-                              'assets/png/riders/rider1.png',
-                              width: 84.w,
-                              height: 56.h,
-                              colorBlendMode: BlendMode.multiply,
-                              fit: BoxFit.contain,
+                            Positioned(
+                              bottom: 12.h,
+                              right: 234.w,
+                              child: Image.asset(
+                                'assets/png/riders/rider1.png',
+                                width: 84.w,
+                                height: 56.h,
+                                colorBlendMode: BlendMode.darken,
+                                fit: BoxFit.contain,
+                              ),
                             ),
-                            SizedBox(height: 3.h),
-                            const TrackWidget(value: 0.4),
-                            SizedBox(height: 2.h),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                const TrackWidget(value: 0.4),
+                                SizedBox(height: 2.h),
+                              ],
+                            ),
                           ],
                         ),
                       ),
@@ -192,6 +157,26 @@ class RaceScreen extends StatelessWidget {
     );
   }
 
+  Widget _buildTitle() {
+    return SizedBox(
+      width: 331.w,
+      child: Row(
+        children: [
+          Text(
+            'Information about the ',
+            style: AppTextStyles.textStyle4,
+          ),
+          Text(
+            'Race',
+            style: AppTextStyles.textStyle4.copyWith(
+              color: AppTheme.yellow,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget _buildTextRow(String text, String text2) {
     return Row(
       children: [
@@ -207,30 +192,6 @@ class RaceScreen extends StatelessWidget {
           style: AppTextStyles.textStyle7.copyWith(
             color: Colors.black,
             fontWeight: FontWeight.w600,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildTextBody({
-    required String title,
-    required String content,
-    Color? color,
-  }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          title,
-          style: AppTextStyles.textStyle12.copyWith(
-            color: AppTheme.grey3,
-          ),
-        ),
-        Text(
-          content,
-          style: AppTextStyles.textStyle5.copyWith(
-            color: color ?? Colors.black,
           ),
         ),
       ],
