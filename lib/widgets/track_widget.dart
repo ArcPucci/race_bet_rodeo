@@ -27,7 +27,7 @@ class TrackWidget extends StatelessWidget {
             ),
           ),
           Container(
-            width: value * (329.w - 12.sp),
+            width: value * (329.w - 6.sp),
             height: 4.sp,
             decoration: BoxDecoration(
               color: AppTheme.yellow,
@@ -35,7 +35,7 @@ class TrackWidget extends StatelessWidget {
             ),
           ),
           Positioned(
-            left: (value * (329.w - 24.sp)),
+            left: (value * (329.w - 6.sp)),
             child: Container(
               width: 10.sp,
               height: 10.sp,

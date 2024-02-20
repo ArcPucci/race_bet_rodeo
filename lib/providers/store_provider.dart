@@ -57,7 +57,7 @@ class StoreProvider extends ChangeNotifier {
     if (_selectedRider.id != -1) _allRiders.add(_selectedRider);
 
     for (final item in riderSkins) {
-      if (!_skins.contains(item.id)) continue;
+      if (!_skins.contains(item.id) || _allRiders.contains(item)) continue;
       _allRiders.add(item);
     }
 
@@ -72,7 +72,7 @@ class StoreProvider extends ChangeNotifier {
     if (_selectedBackground.id != -1) _allBG.add(_selectedBackground);
 
     for (final item in backgroundSkins) {
-      if (!_backgrounds.contains(item.id)) continue;
+      if (!_backgrounds.contains(item.id) || _allBG.contains(item)) continue;
       _allBG.add(item);
     }
 
@@ -97,12 +97,10 @@ class StoreProvider extends ChangeNotifier {
     } else if (rider.price <= _coins) {
       _coins -= rider.price;
       await _service.setCoins(_coins);
-      _selectedRider = rider;
       _skins.add(rider.id);
       await _service.setSkins(_skins);
     }
 
-    updateSkinsList();
     notifyListeners();
   }
 
@@ -121,12 +119,10 @@ class StoreProvider extends ChangeNotifier {
     } else if (background.price <= _coins) {
       _coins -= background.price;
       await _service.setCoins(_coins);
-      _selectedBackground = background;
       _backgrounds.add(background.id);
       await _service.setBGSkins(_backgrounds);
     }
 
-    updateSkinsList();
     notifyListeners();
   }
 

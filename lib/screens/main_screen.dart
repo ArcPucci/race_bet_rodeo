@@ -35,7 +35,7 @@ class MainScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                const CoinsBox(coins: 100),
+                const CoinsBox(),
               ],
             ),
           ),

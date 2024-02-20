@@ -27,16 +27,14 @@ class BackgroundsScreen extends StatelessWidget {
                     ),
                   ),
                   const Spacer(),
-                  CoinsBox(
-                    coins: 100,
-                    height: 41.h,
-                  ),
+                  CoinsBox(height: 41.h),
                   SizedBox(width: 6.w),
                 ],
               ),
               Expanded(
                 child: GridView.builder(
-                  padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 22.w),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 16.h, horizontal: 22.w),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     mainAxisExtent: 183.h,

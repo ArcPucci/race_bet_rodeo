@@ -42,10 +42,7 @@ class ShopAppBar extends StatelessWidget {
               ),
             ),
             Text('Shop', style: AppTextStyles.textStyle3),
-            CoinsBox(
-              height: 41.h,
-              coins: coins,
-            ),
+            CoinsBox(height: 41.h),
           ],
         ),
       ),

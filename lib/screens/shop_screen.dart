@@ -6,8 +6,24 @@ import 'package:race_bet_rodeo/providers/providers.dart';
 import 'package:race_bet_rodeo/utils/utils.dart';
 import 'package:race_bet_rodeo/widgets/widgets.dart';
 
-class ShopScreen extends StatelessWidget {
+class ShopScreen extends StatefulWidget {
   const ShopScreen({super.key});
+
+  @override
+  State<ShopScreen> createState() => _ShopScreenState();
+}
+
+class _ShopScreenState extends State<ShopScreen> {
+  @override
+  void initState() {
+    super.initState();
+    final provider = Provider.of<StoreProvider>(
+      context,
+      listen: false,
+    );
+    provider.updateBGList();
+    provider.updateSkinsList();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +65,8 @@ class ShopScreen extends StatelessWidget {
                           itemCount: value.allBG.length,
                           itemBuilder: (context, index) {
                             final bg = value.allBG[index];
-                            final selected = value.selectedBackground.id == bg.id;
+                            final selected =
+                                value.selectedBackground.id == bg.id;
                             final bought = value.backgrounds.contains(bg.id);
                             return Padding(
                               padding: EdgeInsets.only(right: 16.w),

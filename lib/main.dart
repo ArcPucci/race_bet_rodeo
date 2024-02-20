@@ -165,7 +165,7 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(
           create: (context) => StoreProvider(
             Provider.of(context, listen: false),
-          ),
+          )..init(),
         ),
         ChangeNotifierProvider(
           create: (context) => RidersProvider(),
