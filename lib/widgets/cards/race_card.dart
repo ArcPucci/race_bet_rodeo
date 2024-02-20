@@ -4,7 +4,12 @@ import 'package:race_bet_rodeo/utils/utils.dart';
 import 'package:race_bet_rodeo/widgets/widgets.dart';
 
 class RaceCard extends StatelessWidget {
-  const RaceCard({super.key});
+  const RaceCard({
+    super.key,
+    required this.value,
+  });
+
+  final double value;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +52,7 @@ class RaceCard extends StatelessWidget {
               ],
             ),
           ),
-          const TrackWidget(value: 1),
+          TrackWidget(value: value),
         ],
       ),
     );

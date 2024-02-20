@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+import 'package:race_bet_rodeo/providers/providers.dart';
 import 'package:race_bet_rodeo/utils/utils.dart';
 import 'package:race_bet_rodeo/widgets/widgets.dart';
 
@@ -34,7 +37,7 @@ class PremiumScreen extends StatelessWidget {
               const Spacer(),
               PremiumButton(
                 hasBorder: true,
-                onTap: () {},
+                onTap: () => onBuyPremium(context),
               ),
               SizedBox(height: 24.h),
               SizedBox(
@@ -87,5 +90,16 @@ class PremiumScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void onBuyPremium(BuildContext context) {
+    final provider = Provider.of<StoreProvider>(
+      context,
+      listen: false,
+    );
+
+    provider.onBuyPremium();
+
+    context.pop();
   }
 }

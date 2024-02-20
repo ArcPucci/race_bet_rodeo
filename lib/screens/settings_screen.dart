@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:race_bet_rodeo/providers/providers.dart';
 import 'package:race_bet_rodeo/screens/premium_screen.dart';
 import 'package:race_bet_rodeo/widgets/widgets.dart';
 
@@ -8,29 +10,34 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BGWidget(
-      child: Column(
-        children: [
-          const CustomAppBar2(text: 'SETTINGS'),
-          SizedBox(height: 24.h),
-          const CustomButton2(
-            asset: 'assets/png/icons/privacy.png',
-            text: 'Privacy Policy',
+    return Consumer<StoreProvider>(
+      builder: (BuildContext context, value, Widget? child) {
+        return BGWidget(
+          child: Column(
+            children: [
+              const CustomAppBar2(text: 'SETTINGS'),
+              SizedBox(height: 24.h),
+              const CustomButton2(
+                asset: 'assets/png/icons/privacy.png',
+                text: 'Privacy Policy',
+              ),
+              SizedBox(height: 16.h),
+              const CustomButton2(
+                asset: 'assets/png/icons/terms.png',
+                text: 'Terms of use',
+              ),
+              SizedBox(height: 16.h),
+              const CustomButton2(
+                asset: 'assets/png/icons/support.png',
+                text: 'Support',
+              ),
+              SizedBox(height: 16.h),
+              if (!value.premium)
+                PremiumButton(onTap: () => onTapPremium(context)),
+            ],
           ),
-          SizedBox(height: 16.h),
-          const CustomButton2(
-            asset: 'assets/png/icons/terms.png',
-            text: 'Terms of use',
-          ),
-          SizedBox(height: 16.h),
-          const CustomButton2(
-            asset: 'assets/png/icons/support.png',
-            text: 'Support',
-          ),
-          SizedBox(height: 16.h),
-          PremiumButton(onTap: () => onTapPremium(context)),
-        ],
-      ),
+        );
+      },
     );
   }
 

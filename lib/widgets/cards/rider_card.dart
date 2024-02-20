@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:race_bet_rodeo/models/models.dart';
 import 'package:race_bet_rodeo/widgets/widgets.dart';
 
 class RiderCard extends StatelessWidget {
   const RiderCard({
     super.key,
     this.mini = false,
+    this.selected = false,
+    this.bought = false,
+    this.onTap,
+    required this.rider,
   });
 
   final bool mini;
+  final bool selected;
+  final bool bought;
+  final VoidCallback? onTap;
+  final Rider rider;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +44,7 @@ class RiderCard extends StatelessWidget {
             ),
             alignment: Alignment.center,
             child: Image.asset(
-              'assets/png/riders/rider2.png',
+              rider.image,
               width: 161.w,
               height: 106.h,
               fit: BoxFit.contain,
@@ -44,8 +53,9 @@ class RiderCard extends StatelessWidget {
           BuyButton(
             coins: 20,
             borderRadius: mini ? 8 : null,
-            hasBought: false,
-            selected: true,
+            bought: bought,
+            selected: selected,
+            onTap: onTap,
           ),
         ],
       ),

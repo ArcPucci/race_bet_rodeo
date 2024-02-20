@@ -27,7 +27,7 @@ class TrackWidget extends StatelessWidget {
             ),
           ),
           Container(
-            width: value * 329.w,
+            width: value * (329.w - 12.sp),
             height: 4.sp,
             decoration: BoxDecoration(
               color: AppTheme.yellow,

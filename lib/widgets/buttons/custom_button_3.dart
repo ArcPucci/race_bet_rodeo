@@ -10,7 +10,7 @@ class BuyButton extends StatelessWidget {
     this.height,
     required this.coins,
     this.borderRadius,
-    this.hasBought = false,
+    this.bought = false,
     this.selected = false,
   });
 
@@ -19,7 +19,7 @@ class BuyButton extends StatelessWidget {
   final double? height;
   final int coins;
   final double? borderRadius;
-  final bool hasBought;
+  final bool bought;
   final bool selected;
 
   @override
@@ -41,7 +41,7 @@ class BuyButton extends StatelessWidget {
   }
 
   Widget _buildContent() {
-    if (!hasBought) {
+    if (!bought) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -64,7 +64,7 @@ class BuyButton extends StatelessWidget {
   }
 
   Border? _buildBorder() {
-    if(!hasBought) return null;
+    if(!bought) return null;
     if(selected) {
       return Border.all(
         width: 1.sp,
@@ -75,7 +75,7 @@ class BuyButton extends StatelessWidget {
   }
 
   Color? _getColor() {
-    if(!hasBought) return AppTheme.yellow;
+    if(!bought) return AppTheme.yellow;
     if(selected) return Colors.white;
     return AppTheme.yellow;
   }
