@@ -96,6 +96,28 @@ class _MyAppState extends State<MyApp> {
                   child: const ShopScreen(),
                 );
               },
+              routes: [
+                GoRoute(
+                  path: 'bg',
+                  pageBuilder: (context, state) {
+                    return buildPageWithDefaultTransition(
+                      context: context,
+                      state: state,
+                      child: const BackgroundsScreen(),
+                    );
+                  },
+                ),
+                GoRoute(
+                  path: 'riders',
+                  pageBuilder: (context, state) {
+                    return buildPageWithDefaultTransition(
+                      context: context,
+                      state: state,
+                      child: const RiderSkinsScreen(),
+                    );
+                  },
+                ),
+              ],
             ),
             GoRoute(
               path: 'race',

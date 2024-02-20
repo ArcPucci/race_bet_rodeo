@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:race_bet_rodeo/widgets/widgets.dart';
 
-class RiderCard extends StatelessWidget {
-  const RiderCard({super.key});
+class BGCard extends StatelessWidget {
+  const BGCard({
+    super.key,
+    this.mini = false,
+  });
+
+  final bool mini;
 
   @override
   Widget build(BuildContext context) {
@@ -18,25 +23,19 @@ class RiderCard extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-            width: 254.w,
-            height: 118.h,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(
-                width: 1.sp,
-                color: Colors.black.withOpacity(0.1),
-              ),
-            ),
-            alignment: Alignment.center,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
             child: Image.asset(
-              'assets/png/riders/rider2.png',
-              width: 161.w,
-              height: 106.h,
-              fit: BoxFit.contain,
+              mini ? 'assets/png/bg/mini_bg_2.png' : 'assets/png/bg/bg2.png',
+              width: 254.w,
+              height: 118.h,
+              fit: BoxFit.cover,
             ),
           ),
-          const CustomButton3(coins: 20),
+          BuyButton(
+            coins: 20,
+            borderRadius: mini ? 8 : null,
+          ),
         ],
       ),
     );

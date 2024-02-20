@@ -49,7 +49,7 @@ class BoostCard extends StatelessWidget {
               ],
             ),
           ),
-          CustomButton3(
+          BuyButton(
             width: 136.w,
             height: 39.h,
             coins: price,

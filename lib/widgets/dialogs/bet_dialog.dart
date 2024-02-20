@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:race_bet_rodeo/utils/utils.dart';
-import 'package:race_bet_rodeo/widgets/custom_button_1.dart';
+import 'package:race_bet_rodeo/widgets/buttons/custom_button_1.dart';
 import 'package:race_bet_rodeo/widgets/custom_input.dart';
 
 class BetDialog extends StatelessWidget {

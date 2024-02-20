@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:race_bet_rodeo/utils/utils.dart';
 import 'package:race_bet_rodeo/widgets/widgets.dart';
 
@@ -32,7 +33,7 @@ class ShopScreen extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: BorderedButton1(
                       text: 'SEE ALL',
-                      onTap: () {},
+                      onTap: () => context.go('/shop/bg'),
                     ),
                   ),
                   SizedBox(height: 16.h),
@@ -70,7 +71,7 @@ class ShopScreen extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: BorderedButton1(
                       text: 'SEE ALL',
-                      onTap: () {},
+                      onTap: () => context.go('/shop/riders'),
                     ),
                   ),
                   SizedBox(height: 15.h),
