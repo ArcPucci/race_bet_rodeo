@@ -6,3 +6,4 @@ export 'premium_screen.dart';
 export 'race_screen.dart';
 export 'backgrounds_screen.dart';
 export 'rider_skins_screen.dart';
+export 'result_screen.dart';

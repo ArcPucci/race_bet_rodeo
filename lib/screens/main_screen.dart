@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:race_bet_rodeo/utils/utils.dart';
-import 'package:race_bet_rodeo/widgets/coins_box.dart';
 import 'package:race_bet_rodeo/widgets/widgets.dart';
 
 class MainScreen extends StatelessWidget {

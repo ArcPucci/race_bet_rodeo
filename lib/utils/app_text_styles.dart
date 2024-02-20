@@ -97,4 +97,18 @@ class AppTextStyles {
     height: 18 / 13,
     color: AppTheme.yellow,
   );
+
+  static final TextStyle textStyle14 = TextStyle(
+    fontSize: 40.r,
+    fontWeight: FontWeight.w700,
+    height: 48 / 40,
+    color: AppTheme.yellow,
+  );
+
+  static final TextStyle textStyle15 = TextStyle(
+    fontSize: 32.r,
+    fontWeight: FontWeight.w700,
+    height: 38 / 32,
+    color: AppTheme.yellow,
+  );
 }

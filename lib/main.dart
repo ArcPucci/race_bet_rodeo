@@ -129,6 +129,16 @@ class _MyAppState extends State<MyApp> {
                 );
               },
             ),
+            GoRoute(
+              path: 'result',
+              pageBuilder: (context, state) {
+                return buildPageWithDefaultTransition(
+                  context: context,
+                  state: state,
+                  child: const ResultScreen(),
+                );
+              },
+            ),
           ],
         ),
       ],
