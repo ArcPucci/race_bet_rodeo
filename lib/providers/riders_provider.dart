@@ -84,7 +84,7 @@ class RidersProvider extends ChangeNotifier {
         id: i,
         name: name,
         no: randNumber,
-        lastRaceWon: lastRaceWon,
+        lastRaceWon: (lastRaceWon || lose == 0),
         age: age,
         gender: male ? 'stallion' : 'mare',
         usesBlenders: usesBlenders,

@@ -43,12 +43,14 @@ class RaceProvider extends ChangeNotifier {
 
   List<double> get distances => _distances;
 
+  double get speed => _speeds.isNotEmpty ? _speeds[0] : 1;
+
   void init() {
     _duration = 60000;
     _time = 0;
     _speeds = List.generate(
       horses.length,
-      (index) => Random().nextDouble() / 500,
+      (index) => (Random().nextDouble() + 0.1) / 400,
     );
     _distances = List.generate(horses.length, (index) => 0);
     _timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
@@ -65,7 +67,7 @@ class RaceProvider extends ChangeNotifier {
       }
       if (_duration % 10000 == 0) {
         for (int i = 0; i < _speeds.length; i++) {
-          _speeds[i] = Random().nextDouble() / 400;
+          _speeds[i] = (Random().nextDouble() + 0.1) / 400;
         }
       }
 
