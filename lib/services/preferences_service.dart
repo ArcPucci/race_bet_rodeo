@@ -31,7 +31,7 @@ class PreferencesService {
 
   List<int> getBGSkins() {
     final map = _preferences.getStringList(bgKey) ?? [];
-    if(map.isEmpty) return [];
+    if (map.isEmpty) return [];
 
     final list = map.map((e) => int.parse(e)).toList();
     return list;
@@ -44,7 +44,7 @@ class PreferencesService {
 
   List<int> getSkins() {
     final map = _preferences.getStringList(skinsKey) ?? [];
-    if(map.isEmpty) return [];
+    if (map.isEmpty) return [];
 
     final list = map.map((e) => int.parse(e)).toList();
     return list;
@@ -56,10 +56,10 @@ class PreferencesService {
 
   Rider getSkin() {
     final id = _preferences.getInt(selectedRiderKey) ?? -1;
-    if(id == -1) return Rider.defaultSkin();
+    if (id == -1) return Rider.defaultSkin();
 
-    for(final item in riderSkins) {
-      if(item.id == id) return item;
+    for (final item in riderSkins) {
+      if (item.id == id) return item;
     }
 
     return Rider.defaultSkin();
@@ -71,10 +71,10 @@ class PreferencesService {
 
   Background getBG() {
     final id = _preferences.getInt(selectedBGKey) ?? -1;
-    if(id == -1) return Background.defaultBG();
+    if (id == -1) return Background.defaultBG();
 
-    for(final item in backgroundSkins) {
-      if(item.id == id) return item;
+    for (final item in backgroundSkins) {
+      if (item.id == id) return item;
     }
 
     return Background.defaultBG();
@@ -100,9 +100,9 @@ class PreferencesService {
     final temp = _preferences.getInt(lastDateKey) ?? 0;
 
     final date = DateTime.now();
-    final currentDate = DateTime(date.year, date.month, date.day);
+    final currentDate = DateTime(date.year, date.month, date.day - 1);
 
-    if(temp == 0) return currentDate;
+    if (temp == 0) return currentDate;
 
     return DateTime.fromMicrosecondsSinceEpoch(temp);
   }
