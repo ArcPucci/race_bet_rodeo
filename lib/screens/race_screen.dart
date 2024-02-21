@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -24,7 +25,7 @@ class RaceScreen extends StatelessWidget {
               top: false,
               child: Column(
                 children: [
-                  const GameAppBar(),
+                  GameAppBar(onExit: () => showExitDialog(context)),
                   SizedBox(height: 24.h),
                   _buildTitle(),
                   SizedBox(height: 10.h),
@@ -213,6 +214,15 @@ class RaceScreen extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  void showExitDialog(BuildContext context) async {
+    await showCupertinoDialog(
+      context: context,
+      builder: (context) {
+        return Center(child: ExitDialog());
+      },
     );
   }
 }

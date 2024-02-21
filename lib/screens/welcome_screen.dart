@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:race_bet_rodeo/utils/utils.dart';
 import 'package:race_bet_rodeo/widgets/widgets.dart';
 
@@ -44,7 +45,10 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
-                const CustomButton1(text: 'LETS PLAY!'),
+                CustomButton1(
+                  text: 'LETS PLAY!',
+                  onTap: () => context.go('/'),
+                ),
                 SizedBox(height: 24.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
