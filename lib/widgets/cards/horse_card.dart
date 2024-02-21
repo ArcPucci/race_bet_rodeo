@@ -96,7 +96,8 @@ class HorseCard extends StatelessWidget {
                       horse.lastRaceWon ? 'won' : 'lost',
                       style: AppTextStyles.textStyle9.copyWith(
                         fontWeight: FontWeight.w700,
-                        color: AppTheme.green,
+                        color:
+                            horse.lastRaceWon ? AppTheme.green : AppTheme.red,
                       ),
                     ),
                   ],

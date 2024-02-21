@@ -37,16 +37,20 @@ class RaceProvider extends ChangeNotifier {
 
   Horse get horse => horses.first;
 
-  List<double> speeds = List.generate(
-    6,
-    (index) => Random().nextDouble() / 500,
-  );
+  List<double> _speeds = [];
 
-  List<double> distances = List.generate(6, (index) => 0);
+  List<double> _distances = [];
+
+  List<double> get distances => _distances;
 
   void init() {
     _duration = 60000;
     _time = 0;
+    _speeds = List.generate(
+      horses.length,
+      (index) => Random().nextDouble() / 500,
+    );
+    _distances = List.generate(horses.length, (index) => 0);
     _timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
       if (_duration % 1000 == 0) _time++;
       if (_duration <= 0) {
@@ -60,15 +64,15 @@ class RaceProvider extends ChangeNotifier {
         }
       }
       if (_duration % 10000 == 0) {
-        for (int i = 0; i < speeds.length; i++) {
-          speeds[i] = Random().nextDouble() / 400;
+        for (int i = 0; i < _speeds.length; i++) {
+          _speeds[i] = Random().nextDouble() / 400;
         }
       }
 
       _duration -= 100;
 
       for (int i = 0; i < distances.length; i++) {
-        distances[i] += speeds[i];
+        distances[i] += _speeds[i];
       }
       notifyListeners();
     });

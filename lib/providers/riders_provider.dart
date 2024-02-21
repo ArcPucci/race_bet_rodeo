@@ -34,7 +34,7 @@ class RidersProvider extends ChangeNotifier {
     _horses.clear();
     final numbersList = [];
     final namesList = [];
-    int horsesNumber = 6;
+    int horsesNumber = Random().nextInt(3) + 5;
 
     final images = List.from(HorseData.images);
 

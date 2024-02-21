@@ -35,7 +35,7 @@ class TrackWidget extends StatelessWidget {
             ),
           ),
           Positioned(
-            left: (value * (329.w - 6.sp)),
+            left: (value * (329.w - 12.sp)),
             child: Container(
               width: 10.sp,
               height: 10.sp,

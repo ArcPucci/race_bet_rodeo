@@ -55,7 +55,7 @@ class _MainScreenState extends State<MainScreen> {
                           style: AppTextStyles.textStyle4,
                         ),
                         Text(
-                          'Total horses in this race: 6',
+                          'Total horses in this race: ${value.horses.length}',
                           style: AppTextStyles.textStyle5,
                         ),
                       ],

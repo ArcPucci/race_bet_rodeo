@@ -30,7 +30,7 @@ class RaceScreen extends StatelessWidget {
                   _buildTitle(),
                   SizedBox(height: 10.h),
                   RaceDetails(
-                    horsesCount: 6,
+                    horsesCount: value.horses.length,
                     bet: value.bet,
                     number: value.horse.no,
                   ),
@@ -129,35 +129,42 @@ class RaceScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 10.h),
-                              Container(
-                                width: 331.w,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                  border: Border.all(
-                                    width: 1.sp,
-                                    color: AppTheme.whiteAccent2,
-                                  ),
-                                ),
-                                padding:
-                                    EdgeInsets.only(top: 13.h, bottom: 8.h),
-                                child: Column(
-                                  children: List.generate(
-                                    value.horses.length - 1,
-                                    (index) {
-                                      final horse = value.horses[index + 1];
-                                      return Padding(
-                                        padding: EdgeInsets.only(
-                                          top: index != 0 ? 16.h : 0,
-                                        ),
-                                        child: RaceCard(
-                                          name: horse.name,
-                                          no: horse.no,
-                                          value: value.distances[index + 1],
-                                        ),
-                                      );
-                                    },
+                              // SizedBox(height: 10.h),
+                              Expanded(
+                                child: SingleChildScrollView(
+                                  padding: EdgeInsets.symmetric(vertical: 10.h),
+                                  child: Container(
+                                    width: 331.w,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(
+                                        width: 1.sp,
+                                        color: AppTheme.whiteAccent2,
+                                      ),
+                                    ),
+                                    padding: EdgeInsets.only(
+                                      top: 13.h,
+                                      bottom: 8.h,
+                                    ),
+                                    child: Column(
+                                      children: List.generate(
+                                        value.horses.length - 1,
+                                        (index) {
+                                          final horse = value.horses[index + 1];
+                                          return Padding(
+                                            padding: EdgeInsets.only(
+                                              top: index != 0 ? 16.h : 0,
+                                            ),
+                                            child: RaceCard(
+                                              name: horse.name,
+                                              no: horse.no,
+                                              value: value.distances[index + 1],
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
