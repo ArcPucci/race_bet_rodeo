@@ -28,7 +28,7 @@ class _RiderWidgetState extends State<RiderWidget> {
   int index = 0;
 
   String get image =>
-      widget.rider.id == -1 ? widget.rider.image : assets[index];
+      widget.rider.id == -1 ? assets[index] : widget.rider.image;
 
   @override
   void initState() {

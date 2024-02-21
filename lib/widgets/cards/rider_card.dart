@@ -51,7 +51,7 @@ class RiderCard extends StatelessWidget {
             ),
           ),
           BuyButton(
-            coins: 20,
+            coins: rider.price,
             borderRadius: mini ? 8 : null,
             bought: bought,
             selected: selected,
