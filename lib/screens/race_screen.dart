@@ -87,7 +87,7 @@ class RaceScreen extends StatelessWidget {
                                     Positioned(
                                       bottom: 12.h,
                                       left: 13.w + value.distances[0] * 220.w,
-                                      child: RiderWidget(),
+                                      child: RiderWidget(rider: value.rider),
                                     ),
                                     Column(
                                       mainAxisAlignment: MainAxisAlignment.end,

@@ -2,9 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:race_bet_rodeo/models/models.dart';
 
 class RiderWidget extends StatefulWidget {
-  const RiderWidget({super.key});
+  const RiderWidget({super.key, required this.rider});
+
+  final Rider rider;
 
   @override
   State<RiderWidget> createState() => _RiderWidgetState();
@@ -24,19 +27,21 @@ class _RiderWidgetState extends State<RiderWidget> {
 
   int index = 0;
 
-  String get image => assets[index];
+  String get image =>
+      widget.rider.id == -1 ? widget.rider.image : assets[index];
 
   @override
   void initState() {
     super.initState();
-    _timer = Timer.periodic(Duration(milliseconds: 200), (timer) {
-      if (index == assets.length - 1) {
-        index = 0;
-      } else {
-        index++;
-      }
-      setState(() {});
-    });
+    if (widget.rider.id == -1)
+      _timer = Timer.periodic(Duration(milliseconds: 200), (timer) {
+        if (index == assets.length - 1) {
+          index = 0;
+        } else {
+          index++;
+        }
+        setState(() {});
+      });
   }
 
   @override
