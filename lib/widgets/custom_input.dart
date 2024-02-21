@@ -6,9 +6,11 @@ class CustomInput extends StatefulWidget {
   const CustomInput({
     super.key,
     required this.controller,
+    this.correct = true,
   });
 
   final TextEditingController controller;
+  final bool correct;
 
   @override
   State<CustomInput> createState() => _CustomInputState();
@@ -39,10 +41,11 @@ class _CustomInputState extends State<CustomInput> {
               child: TextField(
                 focusNode: focusNode,
                 autofocus: true,
+                keyboardType: TextInputType.number,
                 controller: widget.controller,
                 style: AppTextStyles.textStyle1.copyWith(
                   fontWeight: FontWeight.w500,
-                  color: AppTheme.yellow,
+                  color: widget.correct ? AppTheme.yellow : AppTheme.red,
                 ),
                 decoration: const InputDecoration.collapsed(
                   hintText: '',
@@ -53,6 +56,7 @@ class _CustomInputState extends State<CustomInput> {
               'assets/png/icons/coins.png',
               width: 31.sp,
               height: 31.sp,
+              color: widget.correct ? null : AppTheme.red,
               fit: BoxFit.cover,
             ),
           ],

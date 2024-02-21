@@ -13,27 +13,48 @@ class SettingsScreen extends StatelessWidget {
     return Consumer<StoreProvider>(
       builder: (BuildContext context, value, Widget? child) {
         return BGWidget(
-          child: Column(
+          child: Stack(
             children: [
-              const CustomAppBar2(text: 'SETTINGS'),
-              SizedBox(height: 24.h),
-              const CustomButton2(
-                asset: 'assets/png/icons/privacy.png',
-                text: 'Privacy Policy',
+              Positioned(
+                top: 310.h,
+                left: 0,
+                right: 0,
+                child: SafeArea(
+                  child: Center(
+                    child: Image.asset(
+                      'assets/png/lines3.png',
+                      width: 395.w,
+                      height: 206.h,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
               ),
-              SizedBox(height: 16.h),
-              const CustomButton2(
-                asset: 'assets/png/icons/terms.png',
-                text: 'Terms of use',
+              Positioned.fill(
+                child: Column(
+                  children: [
+                    const CustomAppBar2(text: 'SETTINGS'),
+                    SizedBox(height: 24.h),
+                    const CustomButton2(
+                      asset: 'assets/png/icons/privacy.png',
+                      text: 'Privacy Policy',
+                    ),
+                    SizedBox(height: 16.h),
+                    const CustomButton2(
+                      asset: 'assets/png/icons/terms.png',
+                      text: 'Terms of use',
+                    ),
+                    SizedBox(height: 16.h),
+                    const CustomButton2(
+                      asset: 'assets/png/icons/support.png',
+                      text: 'Support',
+                    ),
+                    SizedBox(height: 16.h),
+                    if (!value.premium)
+                      PremiumButton(onTap: () => onTapPremium(context)),
+                  ],
+                ),
               ),
-              SizedBox(height: 16.h),
-              const CustomButton2(
-                asset: 'assets/png/icons/support.png',
-                text: 'Support',
-              ),
-              SizedBox(height: 16.h),
-              if (!value.premium)
-                PremiumButton(onTap: () => onTapPremium(context)),
             ],
           ),
         );

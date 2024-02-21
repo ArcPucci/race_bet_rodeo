@@ -4,10 +4,47 @@ import 'package:race_bet_rodeo/utils/utils.dart';
 import 'package:race_bet_rodeo/widgets/buttons/custom_button_1.dart';
 import 'package:race_bet_rodeo/widgets/custom_input.dart';
 
-class BetDialog extends StatelessWidget {
-  const BetDialog({super.key, this.onConfirm});
+class BetDialog extends StatefulWidget {
+  const BetDialog({
+    super.key,
+    required this.onConfirm,
+    this.correct = false,
+    required this.coins,
+  });
 
-  final VoidCallback? onConfirm;
+  final void Function(int bet) onConfirm;
+  final bool correct;
+  final int coins;
+
+  @override
+  State<BetDialog> createState() => _BetDialogState();
+}
+
+class _BetDialogState extends State<BetDialog> {
+  final controller = TextEditingController();
+
+  bool entered = false;
+
+  bool get correct => bet <= widget.coins || !entered;
+
+  int bet = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    controller.addListener(
+      () => setState(() {
+        if (controller.text.isNotEmpty) bet = int.parse(controller.text);
+        entered = false;
+      }),
+    );
+  }
+
+  @override
+  void dispose() {
+    controller.removeListener(() {});
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +75,22 @@ class BetDialog extends StatelessWidget {
                       ),
                       textAlign: TextAlign.center,
                     ),
-                    SizedBox(height: 20.h),
-                    CustomInput(controller: TextEditingController()),
+                    correct
+                        ? SizedBox(height: 20.h)
+                        : Padding(
+                            padding: EdgeInsets.symmetric(vertical: 12.h),
+                            child: Text(
+                              "You don't have enough coins for this bet!",
+                              style: AppTextStyles.textStyle2.copyWith(
+                                fontWeight: FontWeight.w700,
+                                color: AppTheme.red,
+                              ),
+                            ),
+                          ),
+                    CustomInput(
+                      correct: correct,
+                      controller: controller,
+                    ),
                     SizedBox(height: 16.h),
                     CustomButton1(
                       text: 'CONFIRM',
@@ -47,8 +98,13 @@ class BetDialog extends StatelessWidget {
                         color: Colors.black,
                       ),
                       onTap: () {
+                        entered = true;
+                        setState(() {});
+
+                        if (bet < 50 || bet > widget.coins) return;
+
                         Navigator.of(context).pop();
-                        onConfirm?.call();
+                        widget.onConfirm.call(bet);
                       },
                     ),
                   ],

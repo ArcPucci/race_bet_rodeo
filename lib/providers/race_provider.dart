@@ -8,14 +8,24 @@ import 'package:race_bet_rodeo/providers/providers.dart';
 class RaceProvider extends ChangeNotifier {
   RaceProvider({
     required StoreProvider storeProvider,
-  }) : rider = storeProvider.selectedRider,
-  background = storeProvider.selectedBackground{
+    required RidersProvider ridersProvider,
+  })  : _ridersProvider = ridersProvider,
+        rider = storeProvider.selectedRider,
+        bet = ridersProvider.bet,
+        horses = ridersProvider.horses,
+        background = storeProvider.selectedBackground {
     init();
   }
+
+  final RidersProvider _ridersProvider;
 
   final Rider rider;
 
   final Background background;
+
+  final int bet;
+
+  final List<Horse> horses;
 
   int _duration = 600000;
 
@@ -24,6 +34,8 @@ class RaceProvider extends ChangeNotifier {
   int _time = 0;
 
   Timer? _timer;
+
+  Horse get horse => horses.first;
 
   List<double> speeds = List.generate(
     6,
@@ -38,12 +50,12 @@ class RaceProvider extends ChangeNotifier {
     _timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
       if (_duration % 1000 == 0) _time++;
       if (_duration <= 0) {
-        _timer?.cancel();
+        onFinish();
         return;
       }
       for (int i = 0; i < distances.length; i++) {
         if (distances[i] >= 1) {
-          _timer?.cancel();
+          onFinish();
           return;
         }
       }
@@ -60,6 +72,17 @@ class RaceProvider extends ChangeNotifier {
       }
       notifyListeners();
     });
+  }
+
+  void onFinish() {
+    _timer?.cancel();
+
+    final distance = distances.first;
+    distances.sort((a, b) => b.compareTo(a));
+
+    final place = distances.indexOf(distance) + 1;
+
+    _ridersProvider.setPlace(place);
   }
 
   @override

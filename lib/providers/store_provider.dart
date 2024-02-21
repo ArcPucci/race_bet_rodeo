@@ -141,4 +141,28 @@ class StoreProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  void onAddMoney(int coins) async {
+    _coins += coins;
+    await _service.setCoins(_coins);
+    notifyListeners();
+  }
+
+  void onUseMoney(int coins) async {
+    if(_coins < coins) return;
+    _coins -= coins;
+    await _service.setCoins(_coins);
+    notifyListeners();
+  }
+
+  Future<bool> canGetGift() async {
+    final date = _service.getLastDate();
+    final date2 = DateTime.now();
+    final currentDate = DateTime(date2.year, date2.month, date2.day);
+
+    if(date.isAtSameMomentAs(currentDate)) return false;
+
+    await _service.updateLastAction();
+    return true;
+  }
 }

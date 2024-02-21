@@ -14,6 +14,7 @@ class RaceScreen extends StatelessWidget {
       create: (BuildContext context) {
         return RaceProvider(
           storeProvider: Provider.of(context, listen: false),
+          ridersProvider: Provider.of(context, listen: false),
         );
       },
       child: Consumer<RaceProvider>(
@@ -27,10 +28,10 @@ class RaceScreen extends StatelessWidget {
                   SizedBox(height: 24.h),
                   _buildTitle(),
                   SizedBox(height: 10.h),
-                  const RaceDetails(
+                  RaceDetails(
                     horsesCount: 6,
-                    bet: 50,
-                    number: 33,
+                    bet: value.bet,
+                    number: value.horse.no,
                   ),
                   Expanded(
                     child: Stack(
@@ -59,8 +60,8 @@ class RaceScreen extends StatelessWidget {
                                         style: AppTextStyles.textStyle6,
                                       ),
                                     ),
-                                    _buildTextRow('Name', 'Spirit'),
-                                    _buildTextRow('№:', '33'),
+                                    _buildTextRow('Name: ', value.horse.name),
+                                    _buildTextRow('№: ', "${value.horse.no}"),
                                   ],
                                 ),
                               ),
@@ -142,13 +143,16 @@ class RaceScreen extends StatelessWidget {
                                     EdgeInsets.only(top: 13.h, bottom: 8.h),
                                 child: Column(
                                   children: List.generate(
-                                    value.distances.length - 1,
+                                    value.horses.length - 1,
                                     (index) {
+                                      final horse = value.horses[index + 1];
                                       return Padding(
                                         padding: EdgeInsets.only(
                                           top: index != 0 ? 16.h : 0,
                                         ),
                                         child: RaceCard(
+                                          name: horse.name,
+                                          no: horse.no,
                                           value: value.distances[index + 1],
                                         ),
                                       );
@@ -195,7 +199,7 @@ class RaceScreen extends StatelessWidget {
     return Row(
       children: [
         Text(
-          '$text: ',
+          text,
           style: AppTextStyles.textStyle7.copyWith(
             color: AppTheme.grey3,
           ),

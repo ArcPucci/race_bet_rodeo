@@ -168,7 +168,10 @@ class _MyAppState extends State<MyApp> {
           )..init(),
         ),
         ChangeNotifierProvider(
-          create: (context) => RidersProvider(),
+          create: (context) => RidersProvider(
+            storeProvider: Provider.of(context, listen: false),
+            router: _router,
+          )..onGenerate(),
         ),
       ],
       child: MaterialApp.router(

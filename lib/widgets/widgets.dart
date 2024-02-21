@@ -22,3 +22,4 @@ export 'developing_part.dart';
 export 'coins_box.dart';
 export 'buttons/custom_button_3.dart';
 export 'rider_widget.dart';
+export 'buttons/custom_button_4.dart';

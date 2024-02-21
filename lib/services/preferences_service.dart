@@ -14,6 +14,7 @@ class PreferencesService {
   static const selectedRiderKey = "SELECTED_RIDER";
   static const selectedBGKey = "SELECTED_BG_KEY";
   static const coinsKey = 'COINS_KEY';
+  static const lastDateKey = 'LAST_DATE';
 
   Future<void> setPremium() async {
     await _preferences.setBool(premiumKey, true);
@@ -85,5 +86,24 @@ class PreferencesService {
 
   int getCoins() {
     return _preferences.getInt(coinsKey) ?? 100;
+  }
+
+  Future<void> updateLastAction() async {
+    final date = DateTime.now();
+    final currentDate = DateTime(date.year, date.month, date.day);
+    final temp = currentDate.microsecondsSinceEpoch;
+
+    await _preferences.setInt(lastDateKey, temp);
+  }
+
+  DateTime getLastDate() {
+    final temp = _preferences.getInt(lastDateKey) ?? 0;
+
+    final date = DateTime.now();
+    final currentDate = DateTime(date.year, date.month, date.day);
+
+    if(temp == 0) return currentDate;
+
+    return DateTime.fromMicrosecondsSinceEpoch(temp);
   }
 }

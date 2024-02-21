@@ -7,8 +7,12 @@ class RaceCard extends StatelessWidget {
   const RaceCard({
     super.key,
     required this.value,
+    required this.name,
+    required this.no,
   });
 
+  final String name;
+  final int no;
   final double value;
 
   @override
@@ -24,7 +28,7 @@ class RaceCard extends StatelessWidget {
             child: Row(
               children: [
                 Flexible(
-                  flex: 3,
+                  flex: 4,
                   child: Row(
                     children: [
                       Opacity(
@@ -32,7 +36,7 @@ class RaceCard extends StatelessWidget {
                         child: Text('Name:', style: AppTextStyles.textStyle7),
                       ),
                       SizedBox(width: 2.w),
-                      Text('Eliza', style: AppTextStyles.textStyle8),
+                      Text(name, style: AppTextStyles.textStyle8),
                     ],
                   ),
                 ),
@@ -45,7 +49,7 @@ class RaceCard extends StatelessWidget {
                         child: Text('№:', style: AppTextStyles.textStyle7),
                       ),
                       SizedBox(width: 2.w),
-                      Text('13', style: AppTextStyles.textStyle8),
+                      Text('$no', style: AppTextStyles.textStyle8),
                     ],
                   ),
                 ),

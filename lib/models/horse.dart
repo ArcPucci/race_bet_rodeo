@@ -8,6 +8,7 @@ class Horse {
   final bool usesBlenders;
   final int win;
   final int lose;
+  final String image;
 
   const Horse({
     required this.id,
@@ -19,6 +20,7 @@ class Horse {
     required this.usesBlenders,
     required this.win,
     required this.lose,
+    required this.image,
   });
 
   @override
@@ -34,7 +36,8 @@ class Horse {
           gender == other.gender &&
           usesBlenders == other.usesBlenders &&
           win == other.win &&
-          lose == other.lose;
+          lose == other.lose &&
+          image == other.image;
 
   @override
   int get hashCode =>
@@ -46,5 +49,6 @@ class Horse {
       gender.hashCode ^
       usesBlenders.hashCode ^
       win.hashCode ^
-      lose.hashCode;
+      lose.hashCode ^
+      image.hashCode;
 }
