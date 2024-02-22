@@ -102,7 +102,7 @@ class ResultScreen extends StatelessWidget {
                                 ),
                               ),
                               TextSpan(
-                                text: ' place!',
+                                text: won ? ' place!' : ' place...',
                                 style: AppTextStyles.textStyle3.copyWith(
                                   fontWeight: FontWeight.w500,
                                 ),

@@ -51,12 +51,15 @@ class _MainScreenState extends State<MainScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Choice of horse',
+                          'CHOICE OF HORSE',
                           style: AppTextStyles.textStyle4,
                         ),
-                        Text(
-                          'Total horses in this race: ${value.horses.length}',
-                          style: AppTextStyles.textStyle5,
+                        Opacity(
+                          opacity: 0.5,
+                          child: Text(
+                            'Total horses in this race: ${value.horses.length}',
+                            style: AppTextStyles.textStyle5,
+                          ),
                         ),
                       ],
                     ),

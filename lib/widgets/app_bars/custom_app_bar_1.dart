@@ -40,7 +40,7 @@ class CustomAppBar1 extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            Text('Game', style: AppTextStyles.textStyle3),
+            Text('GAME', style: AppTextStyles.textStyle3),
             GestureDetector(
               onTap: onTapShop,
               child: Image.asset(

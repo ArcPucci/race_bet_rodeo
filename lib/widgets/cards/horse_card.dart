@@ -27,9 +27,12 @@ class HorseCard extends StatelessWidget {
           Row(
             children: [
               SizedBox(width: 10.w),
-              Text(
-                'Name: ',
-                style: AppTextStyles.textStyle4,
+              Opacity(
+                opacity: 0.5,
+                child: Text(
+                  'Name: ',
+                  style: AppTextStyles.textStyle7,
+                ),
               ),
               SizedBox(width: 5.w),
               Text(
@@ -44,17 +47,17 @@ class HorseCard extends StatelessWidget {
           Row(
             children: [
               SizedBox(width: 10.w),
-              Text(
-                '№: ',
-                style: AppTextStyles.textStyle4,
+              Opacity(
+                opacity: 0.5,
+                child: Text(
+                  '№: ',
+                  style: AppTextStyles.textStyle7,
+                ),
               ),
               SizedBox(width: 5.w),
               Text(
                 '${horse.no}',
-                style: AppTextStyles.textStyle6.copyWith(
-                  color: AppTheme.black3,
-                  height: 28 / 20,
-                ),
+                style: AppTextStyles.textStyle5,
               ),
             ],
           ),
@@ -90,7 +93,13 @@ class HorseCard extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: 6.w),
-                    Text('Last race:', style: AppTextStyles.textStyle9),
+                    Opacity(
+                      opacity: 0.5,
+                      child: Text(
+                        'Last race:',
+                        style: AppTextStyles.textStyle9,
+                      ),
+                    ),
                     SizedBox(width: 4.w),
                     Text(
                       horse.lastRaceWon ? 'won' : 'lost',
@@ -102,54 +111,65 @@ class HorseCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Age', style: AppTextStyles.textStyle7),
-                        Text('Horse gender:', style: AppTextStyles.textStyle7),
-                        Text('Uses blinders:', style: AppTextStyles.textStyle7),
-                        Text('Win/Lose:', style: AppTextStyles.textStyle7),
-                        Text('Total races:', style: AppTextStyles.textStyle7),
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('${horse.age} years',
-                            style: AppTextStyles.textStyle8),
-                        Text(horse.gender, style: AppTextStyles.textStyle8),
-                        Text(
-                          horse.usesBlenders ? 'yes' : 'no',
-                          style: AppTextStyles.textStyle8,
-                        ),
-                        Text(
-                          '${horse.win}/${horse.lose}',
-                          style: AppTextStyles.textStyle8,
-                        ),
-                        Text(
-                          '${horse.win + horse.lose}',
-                          style: AppTextStyles.textStyle8,
-                        ),
-                      ],
-                    ),
-                    Container(
-                      width: 108.w,
-                      height: 130.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.horizontal(
-                          left: Radius.circular(4),
-                        ),
-                        image: DecorationImage(
-                          image: AssetImage(horse.image),
-                          fit: BoxFit.cover,
+                SizedBox(
+                  height: 130.h,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Opacity(
+                        opacity: 0.5,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Age:', style: AppTextStyles.textStyle7),
+                            Text('Horse gender:',
+                                style: AppTextStyles.textStyle7),
+                            Text('Uses blinders:',
+                                style: AppTextStyles.textStyle7),
+                            Text('Win/Lose:', style: AppTextStyles.textStyle7),
+                            Text('Total races:',
+                                style: AppTextStyles.textStyle7),
+                          ],
                         ),
                       ),
-                      clipBehavior: Clip.antiAlias,
-                    ),
-                  ],
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('${horse.age} years',
+                              style: AppTextStyles.textStyle8),
+                          Text(horse.gender, style: AppTextStyles.textStyle8),
+                          Text(
+                            horse.usesBlenders ? 'yes' : 'no',
+                            style: AppTextStyles.textStyle8,
+                          ),
+                          Text(
+                            '${horse.win}/${horse.lose}',
+                            style: AppTextStyles.textStyle8,
+                          ),
+                          Text(
+                            '${horse.win + horse.lose}',
+                            style: AppTextStyles.textStyle8,
+                          ),
+                        ],
+                      ),
+                      Container(
+                        width: 108.w,
+                        height: 130.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.horizontal(
+                            left: Radius.circular(4),
+                          ),
+                          image: DecorationImage(
+                            image: AssetImage(horse.image),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        clipBehavior: Clip.antiAlias,
+                      ),
+                    ],
+                  ),
                 ),
                 CustomButton1(
                   text: 'CHOOSE',

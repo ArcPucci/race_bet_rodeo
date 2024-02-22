@@ -192,11 +192,11 @@ class RaceScreen extends StatelessWidget {
       child: Row(
         children: [
           Text(
-            'Information about the ',
+            'INFORMATION ABOUT ',
             style: AppTextStyles.textStyle4,
           ),
           Text(
-            'Race',
+            'RACE',
             style: AppTextStyles.textStyle4.copyWith(
               color: AppTheme.yellow,
             ),

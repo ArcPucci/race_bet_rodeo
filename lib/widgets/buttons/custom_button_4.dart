@@ -26,7 +26,10 @@ class CustomButton4 extends StatelessWidget {
           children: [
             Text(
               'Randomize',
-              style: AppTextStyles.textStyle4,
+              style: AppTextStyles.textStyle10.copyWith(
+                fontWeight: FontWeight.w500,
+                letterSpacing: -0.24,
+              ),
             ),
             SizedBox(width: 5.w),
             Image.asset(
