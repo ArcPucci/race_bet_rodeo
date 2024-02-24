@@ -28,21 +28,31 @@ class ShopAppBar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-              width: 91.w,
-              alignment: Alignment.centerLeft,
-              child: GestureDetector(
-                onTap: context.pop,
-                child: Image.asset(
-                  'assets/png/icons/back.png',
-                  width: 24.sp,
-                  height: 24.sp,
-                  fit: BoxFit.cover,
+            Expanded(
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: GestureDetector(
+                  onTap: context.pop,
+                  child: Image.asset(
+                    'assets/png/icons/back.png',
+                    width: 24.sp,
+                    height: 24.sp,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
-            Text('SHOP', style: AppTextStyles.textStyle3),
-            CoinsBox(height: 41.h),
+            Expanded(
+              child: Center(
+                child: Text('SHOP', style: AppTextStyles.textStyle3),
+              ),
+            ),
+            Expanded(
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: CoinsBox(height: 41.h),
+              ),
+            ),
           ],
         ),
       ),

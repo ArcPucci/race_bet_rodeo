@@ -14,20 +14,20 @@ class CoinsBox extends StatelessWidget {
     return Consumer<StoreProvider>(
       builder: (BuildContext context, value, Widget? child) {
         return Container(
-          width: 91.w,
+          width: 100.w,
           height: height ?? 47.h,
           decoration: BoxDecoration(
             color: AppTheme.black2,
             borderRadius: BorderRadius.circular(5),
           ),
-          padding: EdgeInsets.symmetric(horizontal: 10.w),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 '${value.coins}',
                 style: AppTextStyles.textStyle6,
               ),
+              SizedBox(width: 5.w),
               Image.asset(
                 'assets/png/icons/coins.png',
                 width: 29.r,

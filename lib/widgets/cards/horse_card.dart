@@ -81,6 +81,7 @@ class HorseCard extends StatelessWidget {
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
@@ -172,6 +173,7 @@ class HorseCard extends StatelessWidget {
                   ),
                 ),
                 CustomButton1(
+                  width: 311.w,
                   text: 'CHOOSE',
                   height: 39.h,
                   textStyle: AppTextStyles.textStyle10,

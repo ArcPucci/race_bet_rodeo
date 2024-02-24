@@ -21,30 +21,33 @@ class GameAppBar extends StatelessWidget {
       ),
       padding: EdgeInsets.only(left: 22.w, right: 22.w, bottom: 12.h),
       alignment: Alignment.bottomCenter,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          SizedBox(width: 50.w),
-          Text('RACE', style: AppTextStyles.textStyle3),
-          SizedBox(
-            width: 50.w,
-            child: GestureDetector(
-              onTap: onExit,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Exit', style: AppTextStyles.textStyle12),
-                  Image.asset(
-                    'assets/png/icons/exit.png',
-                    width: 19.r,
-                    height: 19.r,
-                    fit: BoxFit.cover,
-                  ),
-                ],
+      child: SizedBox(
+        height: 41.r,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SizedBox(width: 50.w),
+            Text('RACE', style: AppTextStyles.textStyle3),
+            SizedBox(
+              width: 50.w,
+              child: GestureDetector(
+                onTap: onExit,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Exit', style: AppTextStyles.textStyle12),
+                    Image.asset(
+                      'assets/png/icons/exit.png',
+                      width: 19.r,
+                      height: 19.r,
+                      fit: BoxFit.cover,
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

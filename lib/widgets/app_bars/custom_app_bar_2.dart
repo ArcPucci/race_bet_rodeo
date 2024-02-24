@@ -22,21 +22,24 @@ class CustomAppBar2 extends StatelessWidget {
       ),
       padding: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 12.h),
       alignment: Alignment.bottomCenter,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          GestureDetector(
-            onTap: context.pop,
-            child: Image.asset(
-              'assets/png/icons/back.png',
-              width: 24.r,
-              height: 24.r,
-              fit: BoxFit.cover,
+      child: SizedBox(
+        height: 41.r,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            GestureDetector(
+              onTap: context.pop,
+              child: Image.asset(
+                'assets/png/icons/back.png',
+                width: 24.r,
+                height: 24.r,
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          Text(text, style: AppTextStyles.textStyle3),
-          SizedBox(width: 24.r),
-        ],
+            Text(text, style: AppTextStyles.textStyle3),
+            SizedBox(width: 24.r),
+          ],
+        ),
       ),
     );
   }
